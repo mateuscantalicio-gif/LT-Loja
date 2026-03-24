@@ -3,17 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LT Store | Luxury Minimalist</title>
+    <title>LT Store | Luxo Minimalista</title>
     
-    <!-- Google Fonts: Cormorant Garamond (Serif) & Montserrat (Sans) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <script>
@@ -37,12 +34,12 @@
     <style>
         body { background-color: #f5f2ed; color: #1a1a1a; overflow-x: hidden; }
         
-        /* Custom Scrollbar */
+        /* Barra de Rolagem Personalizada */
         ::-webkit-scrollbar { width: 3px; }
         ::-webkit-scrollbar-track { background: #f5f2ed; }
         ::-webkit-scrollbar-thumb { background: #c5a059; }
 
-        /* Animations */
+        /* Animações */
         .fade-in { animation: fadeIn 0.8s ease-out forwards; }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -91,12 +88,11 @@
 </head>
 <body class="font-sans">
 
-    <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 bg-paper/80 backdrop-blur-md border-b border-ink/5">
         <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
             <div class="hidden md:flex items-center gap-8 text-[10px] uppercase tracking-[2px] font-medium">
-                <button onclick="navigate('home')" class="nav-underline">Home</button>
-                <button onclick="navigate('store')" class="nav-underline">Collection</button>
+                <button onclick="navigate('home')" class="nav-underline">Início</button>
+                <button onclick="navigate('store')" class="nav-underline">Coleção</button>
             </div>
 
             <h1 onclick="navigate('home')" class="font-serif text-3xl tracking-[-1px] cursor-pointer font-light">LT STORE</h1>
@@ -114,22 +110,20 @@
                 </button>
                 <div class="hidden md:flex items-center gap-8 text-[10px] uppercase tracking-[2px] font-medium ml-8">
                     <button onclick="navigate('lookbook')" class="nav-underline">Lookbook</button>
-                    <button onclick="navigate('about')" class="nav-underline">About</button>
+                    <button onclick="navigate('about')" class="nav-underline">Sobre</button>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
     <main id="main-content" class="pt-24 min-h-screen"></main>
 
-    <!-- Footer -->
     <footer class="bg-ink text-paper py-24 mt-24">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-16">
             <div class="col-span-1 md:col-span-2 space-y-8">
-                <h2 class="font-serif text-4xl font-light italic">The Art of Living</h2>
+                <h2 class="font-serif text-4xl font-light italic">A Arte de Viver</h2>
                 <p class="text-paper/50 text-sm max-w-md leading-relaxed font-light">
-                    Curating timeless elegance for the modern woman. Our pieces are designed to be lived in, loved, and passed down through generations.
+                    Curadoria de elegância atemporal para a mulher moderna. Nossas peças são feitas para serem vividas, amadas e passadas por gerações.
                 </p>
                 <div class="flex gap-6">
                     <i data-lucide="instagram" class="w-5 h-5 cursor-pointer hover:text-gold transition-colors"></i>
@@ -138,34 +132,33 @@
                 </div>
             </div>
             <div class="space-y-6">
-                <h4 class="text-[10px] uppercase tracking-[3px] font-semibold text-gold">Explore</h4>
+                <h4 class="text-[10px] uppercase tracking-[3px] font-semibold text-gold">Explorar</h4>
                 <ul class="space-y-4 text-sm font-light text-paper/70">
-                    <li><button onclick="navigate('store')" class="hover:text-paper transition-colors">New Arrivals</button></li>
+                    <li><button onclick="navigate('store')" class="hover:text-paper transition-colors">Novidades</button></li>
                     <li><button onclick="navigate('lookbook')" class="hover:text-paper transition-colors">Lookbook</button></li>
-                    <li><button onclick="navigate('about')" class="hover:text-paper transition-colors">Our Story</button></li>
+                    <li><button onclick="navigate('about')" class="hover:text-paper transition-colors">Nossa História</button></li>
                 </ul>
             </div>
             <div class="space-y-6">
                 <h4 class="text-[10px] uppercase tracking-[3px] font-semibold text-gold">Newsletter</h4>
-                <p class="text-xs font-light text-paper/50">Join our exclusive circle for early access.</p>
+                <p class="text-xs font-light text-paper/50">Entre no nosso círculo exclusivo para acesso antecipado.</p>
                 <div class="flex border-b border-paper/20 pb-2">
-                    <input type="email" placeholder="Email Address" class="bg-transparent border-none text-xs outline-none w-full font-light">
-                    <button class="text-[10px] uppercase tracking-widest font-bold text-gold">Join</button>
+                    <input type="email" placeholder="Endereço de E-mail" class="bg-transparent border-none text-xs outline-none w-full font-light">
+                    <button class="text-[10px] uppercase tracking-widest font-bold text-gold">Assinar</button>
                 </div>
             </div>
         </div>
         <div class="max-w-7xl mx-auto px-6 mt-24 pt-8 border-t border-paper/5 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p class="text-[9px] uppercase tracking-[2px] text-paper/30">© 2024 LT Store. All Rights Reserved.</p>
-            <p class="text-[9px] uppercase tracking-[2px] text-paper/30">Crafted by <span class="text-gold">Inveo</span></p>
+            <p class="text-[9px] uppercase tracking-[2px] text-paper/30">© 2024 LT Store. Todos os direitos reservados.</p>
+            <p class="text-[9px] uppercase tracking-[2px] text-paper/30">Desenvolvido por <span class="text-gold">Inveo</span></p>
         </div>
     </footer>
 
-    <!-- Overlays -->
     <div id="cart-sidebar" class="hidden fixed inset-0 z-[100]">
         <div onclick="toggleCart(false)" class="absolute inset-0 bg-ink/40 backdrop-blur-sm"></div>
         <div class="sidebar sidebar-transition absolute top-0 right-0 h-full w-full sm:w-[450px] bg-paper shadow-2xl flex flex-col translate-x-full">
             <div class="p-8 border-b border-ink/5 flex items-center justify-between">
-                <h3 class="font-serif text-2xl italic">Your Selection</h3>
+                <h3 class="font-serif text-2xl italic">Sua Seleção</h3>
                 <button onclick="toggleCart(false)"><i data-lucide="x" class="w-5 h-5"></i></button>
             </div>
             <div id="cart-items" class="flex-grow overflow-y-auto p-8 space-y-8"></div>
@@ -174,7 +167,7 @@
                     <span>Subtotal</span>
                     <span id="cart-subtotal">R$ 0.00</span>
                 </div>
-                <button onclick="navigate('checkout'); toggleCart(false)" class="w-full btn-prestige bg-ink text-paper">Proceed to Checkout</button>
+                <button onclick="navigate('checkout'); toggleCart(false)" class="w-full btn-prestige bg-ink text-paper">Finalizar Compra</button>
             </div>
         </div>
     </div>
@@ -186,44 +179,41 @@
                 <button onclick="toggleMenu(false)"><i data-lucide="x" class="w-6 h-6"></i></button>
             </div>
             <nav class="flex flex-col items-center justify-center flex-grow gap-12 font-serif text-4xl italic">
-                <button onclick="navigate('home'); toggleMenu(false)">Home</button>
-                <button onclick="navigate('store'); toggleMenu(false)">Collection</button>
+                <button onclick="navigate('home'); toggleMenu(false)">Início</button>
+                <button onclick="navigate('store'); toggleMenu(false)">Coleção</button>
                 <button onclick="navigate('lookbook'); toggleMenu(false)">Lookbook</button>
-                <button onclick="navigate('about'); toggleMenu(false)">About</button>
+                <button onclick="navigate('about'); toggleMenu(false)">Sobre</button>
             </nav>
         </div>
     </div>
 
-    <!-- Search Overlay -->
     <div id="search-overlay" class="hidden fixed inset-0 z-[100] bg-paper flex flex-col items-center justify-center p-6">
         <button onclick="toggleSearch(false)" class="absolute top-8 right-8"><i data-lucide="x" class="w-8 h-8"></i></button>
         <div class="w-full max-w-2xl space-y-8 text-center">
-            <h2 class="font-serif text-5xl italic">Search</h2>
-            <input id="search-input-field" type="text" placeholder="What are you looking for?" class="w-full bg-transparent border-b border-ink/20 py-4 text-2xl font-serif italic outline-none text-center focus:border-gold transition-colors">
-            <p class="text-[10px] uppercase tracking-[3px] text-ink/40">Press enter to search</p>
+            <h2 class="font-serif text-5xl italic">Buscar</h2>
+            <input id="search-input-field" type="text" placeholder="O que você está procurando?" class="w-full bg-transparent border-b border-ink/20 py-4 text-2xl font-serif italic outline-none text-center focus:border-gold transition-colors">
+            <p class="text-[10px] uppercase tracking-[3px] text-ink/40">Pressione enter para pesquisar</p>
         </div>
     </div>
 
-    <!-- Product Modal -->
     <div id="product-modal" class="hidden fixed inset-0 z-[110] flex items-center justify-center p-4">
         <div onclick="closeModal()" class="absolute inset-0 bg-ink/60 backdrop-blur-md"></div>
         <div id="modal-content" class="relative w-full max-w-5xl bg-paper shadow-2xl flex flex-col md:flex-row max-h-[90vh] overflow-y-auto transition-all scale-95 opacity-0">
-            <!-- Injetado via JS -->
-        </div>
+            </div>
     </div>
 
     <script>
-        // Data
+        // Dados
         const products = [
-            { id: 1, category: 'Dresses', title: 'Silk Noir Gown', price: 1250.00, imageUrl: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=800', description: 'Pure mulberry silk with a liquid-like drape and deep back detail.', stock: 5 },
-            { id: 2, category: 'Tailoring', title: 'Structured Gold Blazer', price: 890.00, imageUrl: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=800', description: 'Classic silhouette with hand-finished gold buttons and silk lining.', stock: 3 },
-            { id: 3, category: 'Accessories', title: 'Minimal Leather Tote', price: 650.00, imageUrl: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?q=80&w=800', description: 'Full-grain Italian leather with a clean, architectural design.', stock: 8 },
-            { id: 4, category: 'Dresses', title: 'Linen Midi Dress', price: 520.00, imageUrl: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?q=80&w=800', description: 'Premium European linen for effortless summer elegance.', stock: 2 },
-            { id: 5, category: 'Tailoring', title: 'Ivory Wide-Leg Trousers', price: 480.00, imageUrl: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?q=80&w=800', description: 'High-waisted with a fluid cut that elongates the silhouette.', stock: 4 },
-            { id: 6, category: 'Accessories', title: 'Gold Link Belt', price: 290.00, imageUrl: 'https://images.unsplash.com/photo-1624222247344-550fb60583dc?q=80&w=800', description: 'The perfect accent to elevate your tailoring.', stock: 12 }
+            { id: 1, category: 'Vestidos', title: 'Vestido de Seda Noir', price: 1250.00, imageUrl: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=800', description: 'Seda amoreira pura com caimento fluido e detalhe profundo nas costas.', stock: 5 },
+            { id: 2, category: 'Alfaiataria', title: 'Blazer Estruturado Gold', price: 890.00, imageUrl: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=800', description: 'Silhueta clássica com botões dourados finalizados à mão e forro de seda.', stock: 3 },
+            { id: 3, category: 'Acessórios', title: 'Tote de Couro Minimal', price: 650.00, imageUrl: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?q=80&w=800', description: 'Couro italiano legítimo com design limpo e arquitetônico.', stock: 8 },
+            { id: 4, category: 'Vestidos', title: 'Vestido Midi de Linho', price: 520.00, imageUrl: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?q=80&w=800', description: 'Linho europeu premium para uma elegância de verão sem esforço.', stock: 2 },
+            { id: 5, category: 'Alfaiataria', title: 'Pantalona Ivory', price: 480.00, imageUrl: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?q=80&w=800', description: 'Cintura alta com corte fluido que alonga a silhueta.', stock: 4 },
+            { id: 6, category: 'Acessórios', title: 'Cinto de Elos Gold', price: 290.00, imageUrl: 'https://images.unsplash.com/photo-1624222247344-550fb60583dc?q=80&w=800', description: 'O detalhe perfeito para elevar sua alfaiataria.', stock: 12 }
         ];
 
-        // State
+        // Estado
         let cart = JSON.parse(localStorage.getItem('lt_prestige_cart') || '[]');
         let currentPage = 'home';
         let selectedCategory = 'Todos';
@@ -261,38 +251,35 @@
         function renderHome() {
             document.getElementById('main-content').innerHTML = `
                 <section class="fade-in">
-                    <!-- Hero -->
                     <div class="relative h-[90vh] flex items-center justify-center overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1920" class="absolute inset-0 w-full h-full object-cover brightness-75">
                         <div class="relative text-center text-paper space-y-8 px-6">
-                            <span class="text-[10px] uppercase tracking-[5px] font-light">New Collection</span>
-                            <h2 class="font-serif text-7xl md:text-9xl font-light italic">Ethereal Grace</h2>
-                            <button onclick="navigate('store')" class="btn-prestige border-paper hover:bg-paper hover:text-ink">Explore Collection</button>
+                            <span class="text-[10px] uppercase tracking-[5px] font-light">Nova Coleção</span>
+                            <h2 class="font-serif text-7xl md:text-9xl font-light italic">Graça Etérea</h2>
+                            <button onclick="navigate('store')" class="btn-prestige border-paper hover:bg-paper hover:text-ink">Explorar Coleção</button>
                         </div>
                     </div>
 
-                    <!-- Featured -->
                     <div class="py-32 max-w-7xl mx-auto px-6">
                         <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
                             <div class="space-y-4">
-                                <span class="text-gold text-[10px] uppercase tracking-[4px] font-bold">Curated Selection</span>
-                                <h3 class="font-serif text-5xl italic">The Essentials</h3>
+                                <span class="text-gold text-[10px] uppercase tracking-[4px] font-bold">Seleção Especial</span>
+                                <h3 class="font-serif text-5xl italic">Os Essenciais</h3>
                             </div>
-                            <button onclick="navigate('store')" class="text-[10px] uppercase tracking-[3px] font-bold border-b border-ink pb-2">View All</button>
+                            <button onclick="navigate('store')" class="text-[10px] uppercase tracking-[3px] font-bold border-b border-ink pb-2">Ver Tudo</button>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
                             ${products.slice(0, 3).map(p => renderProductCard(p)).join('')}
                         </div>
                     </div>
 
-                    <!-- Immersive Section -->
                     <div class="grid grid-cols-1 md:grid-cols-2 h-screen">
                         <div class="bg-ink text-paper flex flex-col justify-center p-12 md:p-24 space-y-8">
-                            <h3 class="font-serif text-6xl italic leading-tight">Crafted for the <br> Discerning Eye</h3>
+                            <h3 class="font-serif text-6xl italic leading-tight">Feito para o <br> Olhar Exigente</h3>
                             <p class="font-light text-paper/60 leading-relaxed max-w-md">
-                                Every stitch tells a story of dedication. We source only the finest materials from heritage mills to ensure your pieces last a lifetime.
+                                Cada ponto conta uma história de dedicação. Buscamos apenas os melhores materiais para garantir que suas peças durem a vida toda.
                             </p>
-                            <button onclick="navigate('about')" class="btn-prestige border-paper self-start hover:bg-paper hover:text-ink">Our Philosophy</button>
+                            <button onclick="navigate('about')" class="btn-prestige border-paper self-start hover:bg-paper hover:text-ink">Nossa Filosofia</button>
                         </div>
                         <div class="relative overflow-hidden">
                             <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?q=80&w=1200" class="w-full h-full object-cover">
@@ -312,9 +299,9 @@
             document.getElementById('main-content').innerHTML = `
                 <section class="max-w-7xl mx-auto px-6 py-20 fade-in">
                     <div class="flex flex-col md:flex-row justify-between items-baseline mb-20 gap-8">
-                        <h2 class="font-serif text-6xl italic">Collection</h2>
+                        <h2 class="font-serif text-6xl italic">Coleção</h2>
                         <div class="flex flex-wrap gap-8 text-[10px] uppercase tracking-[2px] font-bold">
-                            ${['Todos', 'Dresses', 'Tailoring', 'Accessories'].map(cat => `
+                            ${['Todos', 'Vestidos', 'Alfaiataria', 'Acessórios'].map(cat => `
                                 <button onclick="filterCategory('${cat}')" class="${selectedCategory === cat ? 'text-gold' : 'text-ink/40 hover:text-ink'} transition-colors">${cat}</button>
                             `).join('')}
                         </div>
@@ -332,7 +319,7 @@
                     <div class="relative aspect-[4/5] overflow-hidden bg-ink/5">
                         <img src="${p.imageUrl}" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-ink/0 group-hover:bg-ink/10 transition-colors duration-700"></div>
-                        ${p.stock === 0 ? '<div class="absolute inset-0 flex items-center justify-center"><span class="bg-paper px-6 py-3 text-[9px] uppercase tracking-[3px] font-bold">Sold Out</span></div>' : ''}
+                        ${p.stock === 0 ? '<div class="absolute inset-0 flex items-center justify-center"><span class="bg-paper px-6 py-3 text-[9px] uppercase tracking-[3px] font-bold">Esgotado</span></div>' : ''}
                     </div>
                     <div class="space-y-2">
                         <div class="flex justify-between items-baseline">
@@ -363,13 +350,13 @@
                     
                     ${p.stock > 0 ? `
                         <div class="space-y-4">
-                            <p class="text-[10px] uppercase tracking-[2px] font-bold">Select Size</p>
+                            <p class="text-[10px] uppercase tracking-[2px] font-bold">Selecione o Tamanho</p>
                             <div class="flex gap-4">
                                 ${['P', 'M', 'G'].map(s => `<button onclick="selectSize(this, '${s}')" class="size-btn border border-ink/10 w-12 h-12 text-[10px] font-bold hover:border-gold transition-colors">${s}</button>`).join('')}
                             </div>
                         </div>
-                        <button id="add-btn" disabled onclick="addToCart(${p.id})" class="w-full btn-prestige bg-ink/5 text-ink/30 cursor-not-allowed border-ink/10">Select Size First</button>
-                    ` : '<div class="text-gold text-[10px] uppercase tracking-[3px] font-bold">Currently Unavailable</div>'}
+                        <button id="add-btn" disabled onclick="addToCart(${p.id})" class="w-full btn-prestige bg-ink/5 text-ink/30 cursor-not-allowed border-ink/10">Selecione o Tamanho Primeiro</button>
+                    ` : '<div class="text-gold text-[10px] uppercase tracking-[3px] font-bold">No momento indisponível</div>'}
                 </div>
             `;
             
@@ -387,7 +374,7 @@
             addBtn.disabled = false;
             addBtn.classList.remove('bg-ink/5', 'text-ink/30', 'cursor-not-allowed', 'border-ink/10');
             addBtn.classList.add('bg-ink', 'text-paper');
-            addBtn.innerText = 'Add to Selection';
+            addBtn.innerText = 'Adicionar à Seleção';
         }
 
         function addToCart(id) {
@@ -413,7 +400,7 @@
 
             const itemsContainer = document.getElementById('cart-items');
             if (cart.length === 0) {
-                itemsContainer.innerHTML = '<div class="h-full flex flex-col items-center justify-center space-y-4"><p class="font-serif text-xl italic text-ink/30">Your bag is empty</p></div>';
+                itemsContainer.innerHTML = '<div class="h-full flex flex-col items-center justify-center space-y-4"><p class="font-serif text-xl italic text-ink/30">Sua bolsa está vazia</p></div>';
                 document.getElementById('cart-footer').classList.add('hidden');
             } else {
                 itemsContainer.innerHTML = cart.map((i, index) => `
@@ -424,7 +411,7 @@
                                 <span>${i.title}</span>
                                 <button onclick="removeItem(${index})"><i data-lucide="x" class="w-4 h-4 text-ink/30"></i></button>
                             </div>
-                            <p class="text-[9px] uppercase tracking-[2px] text-ink/40 font-bold">Size: ${i.size}</p>
+                            <p class="text-[9px] uppercase tracking-[2px] text-ink/40 font-bold">Tam: ${i.size}</p>
                             <div class="flex justify-between items-center pt-2">
                                 <div class="flex items-center gap-4 text-xs">
                                     <button onclick="updateQty(${index}, -1)" class="text-ink/30 hover:text-ink">-</button>
@@ -503,20 +490,20 @@
             const subtotal = cart.reduce((acc, i) => acc + (i.price * i.qty), 0);
             document.getElementById('main-content').innerHTML = `
                 <div class="max-w-5xl mx-auto px-6 py-24 fade-in">
-                    <h2 class="font-serif text-6xl italic text-center mb-20">Checkout</h2>
+                    <h2 class="font-serif text-6xl italic text-center mb-20">Finalizar Pedido</h2>
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
                         <div class="space-y-12">
                             <div class="space-y-8">
-                                <h3 class="text-[10px] uppercase tracking-[4px] font-bold text-gold">Shipping Details</h3>
+                                <h3 class="text-[10px] uppercase tracking-[4px] font-bold text-gold">Detalhes de Envio</h3>
                                 <div class="space-y-4">
-                                    <input type="text" placeholder="Full Name" class="w-full bg-transparent border-b border-ink/10 py-4 text-sm font-light outline-none focus:border-gold transition-colors">
-                                    <input type="text" placeholder="Delivery Address" class="w-full bg-transparent border-b border-ink/10 py-4 text-sm font-light outline-none focus:border-gold transition-colors">
+                                    <input type="text" placeholder="Nome Completo" class="w-full bg-transparent border-b border-ink/10 py-4 text-sm font-light outline-none focus:border-gold transition-colors">
+                                    <input type="text" placeholder="Endereço de Entrega" class="w-full bg-transparent border-b border-ink/10 py-4 text-sm font-light outline-none focus:border-gold transition-colors">
                                 </div>
                             </div>
-                            <button onclick="alert('Order Sent via WhatsApp!')" class="w-full btn-prestige bg-ink text-paper">Complete Order via WhatsApp</button>
+                            <button onclick="alert('Pedido enviado via WhatsApp!')" class="w-full btn-prestige bg-ink text-paper">Concluir via WhatsApp</button>
                         </div>
                         <div class="bg-ink/5 p-12 space-y-8 h-fit">
-                            <h3 class="text-[10px] uppercase tracking-[4px] font-bold text-gold">Summary</h3>
+                            <h3 class="text-[10px] uppercase tracking-[4px] font-bold text-gold">Resumo</h3>
                             <div class="space-y-6">
                                 ${cart.map(i => `
                                     <div class="flex justify-between text-sm font-light italic">
@@ -550,13 +537,13 @@
         function renderAbout() {
             document.getElementById('main-content').innerHTML = `
                 <div class="max-w-3xl mx-auto py-32 px-6 text-center space-y-12 fade-in">
-                    <h2 class="font-serif text-7xl italic">Our Story</h2>
+                    <h2 class="font-serif text-7xl italic">Nossa História</h2>
                     <p class="font-serif text-2xl italic leading-relaxed text-ink/70">
-                        "Elegance is not about being noticed, it's about being remembered."
+                        "Elegância não é sobre ser notada, é sobre ser lembrada."
                     </p>
                     <div class="space-y-8 text-sm font-light leading-relaxed text-ink/60">
-                        <p>Founded in 2024, LT Store emerged from a desire to bridge the gap between timeless minimalism and contemporary luxury.</p>
-                        <p>We believe that fashion is a silent form of expression, where the quality of fabrics and the precision of cuts speak louder than any passing trend.</p>
+                        <p>Fundada em 2024, a LT Store nasceu do desejo de unir o minimalismo atemporal ao luxo contemporâneo.</p>
+                        <p>Acreditamos que a moda é uma forma silenciosa de expressão, onde a qualidade dos tecidos e a precisão dos cortes falam mais alto do que qualquer tendência passageira.</p>
                     </div>
                     <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200" class="w-full h-[500px] object-cover">
                 </div>
