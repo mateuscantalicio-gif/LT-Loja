@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LT Store | Luxury Minimalist</title>
+    
+    <!-- Google Fonts: Cormorant Garamond (Serif) & Montserrat (Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'paper': '#f5f2ed',
+                        'ink': '#1a1a1a',
+                        'gold': '#c5a059',
+                    },
+                    fontFamily: {
+                        serif: ['Cormorant Garamond', 'serif'],
+                        sans: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #f5f2ed; color: #1a1a1a; overflow-x: hidden; }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 3px; }
+        ::-webkit-scrollbar-track { background: #f5f2ed; }
+        ::-webkit-scrollbar-thumb { background: #c5a059; }
+
+        /* Animations */
+        .fade-in { animation: fadeIn 0.8s ease-out forwards; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .sidebar-transition { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        
+        .oval-mask {
+            clip-path: ellipse(45% 50% at 50% 50%);
+        }
+
+        .nav-underline {
+            position: relative;
+        }
+        .nav-underline::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: #c5a059;
+            transition: width 0.3s ease;
+        }
+        .nav-underline:hover::after { width: 100%; }
+        
+        .btn-prestige {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #1a1a1a;
+            padding: 12px 32px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.4s;
+        }
+        .btn-prestige:hover {
+            color: #f5f2ed;
+            background-color: #1a1a1a;
+        }
+
+        .product-card img { transition: transform 1.2s cubic-bezier(0.2, 0, 0.2, 1); }
+        .product-card:hover img { transform: scale(1.05); }
+    </style>
+</head>
+<body class="font-sans">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-paper/80 backdrop-blur-md border-b border-ink/5">
+        <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+            <div class="hidden md:flex items-center gap-8 text-[10px] uppercase tracking-[2px] font-medium">
+                <button onclick="navigate('home')" class="nav-underline">Home</button>
+                <button onclick="navigate('store')" class="nav-underline">Collection</button>
+            </div>
+
+            <h1 onclick="navigate('home')" class="font-serif text-3xl tracking-[-1px] cursor-pointer font-light">LT STORE</h1>
+
+            <div class="flex items-center gap-6">
+                <button onclick="toggleSearch(true)" class="hover:text-gold transition-colors">
+                    <i data-lucide="search" class="w-5 h-5 stroke-[1.5px]"></i>
+                </button>
+                <button onclick="toggleCart(true)" class="relative hover:text-gold transition-colors">
+                    <i data-lucide="shopping-bag" class="w-5 h-5 stroke-[1.5px]"></i>
+                    <span id="cart-count" class="hidden absolute -top-2 -right-2 bg-gold text-white text-[8px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+                </button>
+                <button onclick="toggleMenu(true)" class="md:hidden">
+                    <i data-lucide="menu" class="w-5 h-5 stroke-[1.5px]"></i>
+                </button>
+                <div class="hidden md:flex items-center gap-8 text-[10px] uppercase tracking-[2px] font-medium ml-8">
+                    <button onclick="navigate('lookbook')" class="nav-underline">Lookbook</button>
+                    <button onclick="navigate('about')" class="nav-underline">About</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content" class="pt-24 min-h-screen"></main>
+
+    <!-- Footer -->
+    <footer class="bg-ink text-paper py-24 mt-24">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-16">
+            <div class="col-span-1 md:col-span-2 space-y-8">
+                <h2 class="font-serif text-4xl font-light italic">The Art of Living</h2>
+                <p class="text-paper/50 text-sm max-w-md leading-relaxed font-light">
+                    Curating timeless elegance for the modern woman. Our pieces are designed to be lived in, loved, and passed down through generations.
+                </p>
+                <div class="flex gap-6">
+                    <i data-lucide="instagram" class="w-5 h-5 cursor-pointer hover:text-gold transition-colors"></i>
+                    <i data-lucide="facebook" class="w-5 h-5 cursor-pointer hover:text-gold transition-colors"></i>
+                    <i data-lucide="twitter" class="w-5 h-5 cursor-pointer hover:text-gold transition-colors"></i>
+                </div>
+            </div>
+            <div class="space-y-6">
+                <h4 class="text-[10px] uppercase tracking-[3px] font-semibold text-gold">Explore</h4>
+                <ul class="space-y-4 text-sm font-light text-paper/70">
+                    <li><button onclick="navigate('store')" class="hover:text-paper transition-colors">New Arrivals</button></li>
+                    <li><button onclick="navigate('lookbook')" class="hover:text-paper transition-colors">Lookbook</button></li>
+                    <li><button onclick="navigate('about')" class="hover:text-paper transition-colors">Our Story</button></li>
+                </ul>
+            </div>
+            <div class="space-y-6">
+                <h4 class="text-[10px] uppercase tracking-[3px] font-semibold text-gold">Newsletter</h4>
+                <p class="text-xs font-light text-paper/50">Join our exclusive circle for early access.</p>
+                <div class="flex border-b border-paper/20 pb-2">
+                    <input type="email" placeholder="Email Address" class="bg-transparent border-none text-xs outline-none w-full font-light">
+                    <button class="text-[10px] uppercase tracking-widest font-bold text-gold">Join</button>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 mt-24 pt-8 border-t border-paper/5 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-[9px] uppercase tracking-[2px] text-paper/30">© 2024 LT Store. All Rights Reserved.</p>
+            <p class="text-[9px] uppercase tracking-[2px] text-paper/30">Crafted by <span class="text-gold">Inveo</span></p>
+        </div>
+    </footer>
+
+    <!-- Overlays -->
+    <div id="cart-sidebar" class="hidden fixed inset-0 z-[100]">
+        <div onclick="toggleCart(false)" class="absolute inset-0 bg-ink/40 backdrop-blur-sm"></div>
+        <div class="sidebar sidebar-transition absolute top-0 right-0 h-full w-full sm:w-[450px] bg-paper shadow-2xl flex flex-col translate-x-full">
+            <div class="p-8 border-b border-ink/5 flex items-center justify-between">
+                <h3 class="font-serif text-2xl italic">Your Selection</h3>
+                <button onclick="toggleCart(false)"><i data-lucide="x" class="w-5 h-5"></i></button>
+            </div>
+            <div id="cart-items" class="flex-grow overflow-y-auto p-8 space-y-8"></div>
+            <div id="cart-footer" class="hidden p-8 border-t border-ink/5 bg-ink/5 space-y-6">
+                <div class="flex justify-between font-serif text-xl">
+                    <span>Subtotal</span>
+                    <span id="cart-subtotal">R$ 0.00</span>
+                </div>
+                <button onclick="navigate('checkout'); toggleCart(false)" class="w-full btn-prestige bg-ink text-paper">Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden fixed inset-0 z-[100]">
+        <div onclick="toggleMenu(false)" class="absolute inset-0 bg-ink/40 backdrop-blur-sm"></div>
+        <div class="sidebar sidebar-transition absolute top-0 left-0 h-full w-full bg-paper flex flex-col -translate-x-full">
+            <div class="p-8 flex justify-end">
+                <button onclick="toggleMenu(false)"><i data-lucide="x" class="w-6 h-6"></i></button>
+            </div>
+            <nav class="flex flex-col items-center justify-center flex-grow gap-12 font-serif text-4xl italic">
+                <button onclick="navigate('home'); toggleMenu(false)">Home</button>
+                <button onclick="navigate('store'); toggleMenu(false)">Collection</button>
+                <button onclick="navigate('lookbook'); toggleMenu(false)">Lookbook</button>
+                <button onclick="navigate('about'); toggleMenu(false)">About</button>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Search Overlay -->
+    <div id="search-overlay" class="hidden fixed inset-0 z-[100] bg-paper flex flex-col items-center justify-center p-6">
+        <button onclick="toggleSearch(false)" class="absolute top-8 right-8"><i data-lucide="x" class="w-8 h-8"></i></button>
+        <div class="w-full max-w-2xl space-y-8 text-center">
+            <h2 class="font-serif text-5xl italic">Search</h2>
+            <input id="search-input-field" type="text" placeholder="What are you looking for?" class="w-full bg-transparent border-b border-ink/20 py-4 text-2xl font-serif italic outline-none text-center focus:border-gold transition-colors">
+            <p class="text-[10px] uppercase tracking-[3px] text-ink/40">Press enter to search</p>
+        </div>
+    </div>
+
+    <!-- Product Modal -->
+    <div id="product-modal" class="hidden fixed inset-0 z-[110] flex items-center justify-center p-4">
+        <div onclick="closeModal()" class="absolute inset-0 bg-ink/60 backdrop-blur-md"></div>
+        <div id="modal-content" class="relative w-full max-w-5xl bg-paper shadow-2xl flex flex-col md:flex-row max-h-[90vh] overflow-y-auto transition-all scale-95 opacity-0">
+            <!-- Injetado via JS -->
+        </div>
+    </div>
+
+    <script>
+        // Data
+        const products = [
+            { id: 1, category: 'Dresses', title: 'Silk Noir Gown', price: 1250.00, imageUrl: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=800', description: 'Pure mulberry silk with a liquid-like drape and deep back detail.', stock: 5 },
+            { id: 2, category: 'Tailoring', title: 'Structured Gold Blazer', price: 890.00, imageUrl: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=800', description: 'Classic silhouette with hand-finished gold buttons and silk lining.', stock: 3 },
+            { id: 3, category: 'Accessories', title: 'Minimal Leather Tote', price: 650.00, imageUrl: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?q=80&w=800', description: 'Full-grain Italian leather with a clean, architectural design.', stock: 8 },
+            { id: 4, category: 'Dresses', title: 'Linen Midi Dress', price: 520.00, imageUrl: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?q=80&w=800', description: 'Premium European linen for effortless summer elegance.', stock: 2 },
+            { id: 5, category: 'Tailoring', title: 'Ivory Wide-Leg Trousers', price: 480.00, imageUrl: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?q=80&w=800', description: 'High-waisted with a fluid cut that elongates the silhouette.', stock: 4 },
+            { id: 6, category: 'Accessories', title: 'Gold Link Belt', price: 290.00, imageUrl: 'https://images.unsplash.com/photo-1624222247344-550fb60583dc?q=80&w=800', description: 'The perfect accent to elevate your tailoring.', stock: 12 }
+        ];
+
+        // State
+        let cart = JSON.parse(localStorage.getItem('lt_prestige_cart') || '[]');
+        let currentPage = 'home';
+        let selectedCategory = 'Todos';
+        let searchQuery = '';
+
+        function init() {
+            lucide.createIcons();
+            updateCartUI();
+            navigate('home');
+            
+            document.getElementById('search-input-field').addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    searchQuery = e.target.value;
+                    toggleSearch(false);
+                    navigate('store');
+                }
+            });
+        }
+
+        function navigate(page) {
+            currentPage = page;
+            window.scrollTo(0, 0);
+            const content = document.getElementById('main-content');
+            content.innerHTML = '';
+            
+            if (page === 'home') renderHome();
+            else if (page === 'store') renderStore();
+            else if (page === 'lookbook') renderLookbook();
+            else if (page === 'about') renderAbout();
+            else if (page === 'checkout') renderCheckout();
+
+            lucide.createIcons();
+        }
+
+        function renderHome() {
+            document.getElementById('main-content').innerHTML = `
+                <section class="fade-in">
+                    <!-- Hero -->
+                    <div class="relative h-[90vh] flex items-center justify-center overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1920" class="absolute inset-0 w-full h-full object-cover brightness-75">
+                        <div class="relative text-center text-paper space-y-8 px-6">
+                            <span class="text-[10px] uppercase tracking-[5px] font-light">New Collection</span>
+                            <h2 class="font-serif text-7xl md:text-9xl font-light italic">Ethereal Grace</h2>
+                            <button onclick="navigate('store')" class="btn-prestige border-paper hover:bg-paper hover:text-ink">Explore Collection</button>
+                        </div>
+                    </div>
+
+                    <!-- Featured -->
+                    <div class="py-32 max-w-7xl mx-auto px-6">
+                        <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+                            <div class="space-y-4">
+                                <span class="text-gold text-[10px] uppercase tracking-[4px] font-bold">Curated Selection</span>
+                                <h3 class="font-serif text-5xl italic">The Essentials</h3>
+                            </div>
+                            <button onclick="navigate('store')" class="text-[10px] uppercase tracking-[3px] font-bold border-b border-ink pb-2">View All</button>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                            ${products.slice(0, 3).map(p => renderProductCard(p)).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Immersive Section -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 h-screen">
+                        <div class="bg-ink text-paper flex flex-col justify-center p-12 md:p-24 space-y-8">
+                            <h3 class="font-serif text-6xl italic leading-tight">Crafted for the <br> Discerning Eye</h3>
+                            <p class="font-light text-paper/60 leading-relaxed max-w-md">
+                                Every stitch tells a story of dedication. We source only the finest materials from heritage mills to ensure your pieces last a lifetime.
+                            </p>
+                            <button onclick="navigate('about')" class="btn-prestige border-paper self-start hover:bg-paper hover:text-ink">Our Philosophy</button>
+                        </div>
+                        <div class="relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?q=80&w=1200" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
+        function renderStore() {
+            const filtered = products.filter(p => {
+                const matchesSearch = p.title.toLowerCase().includes(searchQuery.toLowerCase());
+                const matchesCat = selectedCategory === 'Todos' || p.category === selectedCategory;
+                return matchesSearch && matchesCat;
+            });
+
+            document.getElementById('main-content').innerHTML = `
+                <section class="max-w-7xl mx-auto px-6 py-20 fade-in">
+                    <div class="flex flex-col md:flex-row justify-between items-baseline mb-20 gap-8">
+                        <h2 class="font-serif text-6xl italic">Collection</h2>
+                        <div class="flex flex-wrap gap-8 text-[10px] uppercase tracking-[2px] font-bold">
+                            ${['Todos', 'Dresses', 'Tailoring', 'Accessories'].map(cat => `
+                                <button onclick="filterCategory('${cat}')" class="${selectedCategory === cat ? 'text-gold' : 'text-ink/40 hover:text-ink'} transition-colors">${cat}</button>
+                            `).join('')}
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-20">
+                        ${filtered.map(p => renderProductCard(p)).join('')}
+                    </div>
+                </section>
+            `;
+        }
+
+        function renderProductCard(p) {
+            return `
+                <div onclick="openProduct(${p.id})" class="product-card group cursor-pointer space-y-6">
+                    <div class="relative aspect-[4/5] overflow-hidden bg-ink/5">
+                        <img src="${p.imageUrl}" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-ink/0 group-hover:bg-ink/10 transition-colors duration-700"></div>
+                        ${p.stock === 0 ? '<div class="absolute inset-0 flex items-center justify-center"><span class="bg-paper px-6 py-3 text-[9px] uppercase tracking-[3px] font-bold">Sold Out</span></div>' : ''}
+                    </div>
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-baseline">
+                            <h4 class="font-serif text-2xl italic">${p.title}</h4>
+                            <span class="text-sm font-light">R$ ${p.price.toFixed(2)}</span>
+                        </div>
+                        <p class="text-[9px] uppercase tracking-[2px] text-ink/40 font-bold">${p.category}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function openProduct(id) {
+            const p = products.find(prod => prod.id === id);
+            const modal = document.getElementById('product-modal');
+            const content = document.getElementById('modal-content');
+            
+            content.innerHTML = `
+                <button onclick="closeModal()" class="absolute top-8 right-8 z-10"><i data-lucide="x" class="w-6 h-6"></i></button>
+                <div class="w-full md:w-1/2 h-[60vh] md:h-auto overflow-hidden">
+                    <img src="${p.imageUrl}" class="w-full h-full object-cover">
+                </div>
+                <div class="w-full md:w-1/2 p-12 md:p-20 flex flex-col justify-center space-y-8">
+                    <span class="text-gold text-[10px] uppercase tracking-[4px] font-bold">${p.category}</span>
+                    <h2 class="font-serif text-5xl italic">${p.title}</h2>
+                    <p class="text-2xl font-light italic">R$ ${p.price.toFixed(2)}</p>
+                    <p class="text-ink/60 text-sm font-light leading-relaxed">${p.description}</p>
+                    
+                    ${p.stock > 0 ? `
+                        <div class="space-y-4">
+                            <p class="text-[10px] uppercase tracking-[2px] font-bold">Select Size</p>
+                            <div class="flex gap-4">
+                                ${['P', 'M', 'G'].map(s => `<button onclick="selectSize(this, '${s}')" class="size-btn border border-ink/10 w-12 h-12 text-[10px] font-bold hover:border-gold transition-colors">${s}</button>`).join('')}
+                            </div>
+                        </div>
+                        <button id="add-btn" disabled onclick="addToCart(${p.id})" class="w-full btn-prestige bg-ink/5 text-ink/30 cursor-not-allowed border-ink/10">Select Size First</button>
+                    ` : '<div class="text-gold text-[10px] uppercase tracking-[3px] font-bold">Currently Unavailable</div>'}
+                </div>
+            `;
+            
+            modal.classList.remove('hidden');
+            setTimeout(() => content.classList.remove('scale-95', 'opacity-0'), 10);
+            lucide.createIcons();
+        }
+
+        let selectedSize = null;
+        function selectSize(btn, size) {
+            selectedSize = size;
+            document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('bg-ink', 'text-paper', 'border-ink'));
+            btn.classList.add('bg-ink', 'text-paper', 'border-ink');
+            const addBtn = document.getElementById('add-btn');
+            addBtn.disabled = false;
+            addBtn.classList.remove('bg-ink/5', 'text-ink/30', 'cursor-not-allowed', 'border-ink/10');
+            addBtn.classList.add('bg-ink', 'text-paper');
+            addBtn.innerText = 'Add to Selection';
+        }
+
+        function addToCart(id) {
+            const p = products.find(prod => prod.id === id);
+            const item = cart.find(i => i.id === id && i.size === selectedSize);
+            if (item) item.qty++;
+            else cart.push({ ...p, size: selectedSize, qty: 1 });
+            saveCart();
+            closeModal();
+            toggleCart(true);
+        }
+
+        function saveCart() {
+            localStorage.setItem('lt_prestige_cart', JSON.stringify(cart));
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const count = cart.reduce((acc, i) => acc + i.qty, 0);
+            const badge = document.getElementById('cart-count');
+            badge.innerText = count;
+            badge.classList.toggle('hidden', count === 0);
+
+            const itemsContainer = document.getElementById('cart-items');
+            if (cart.length === 0) {
+                itemsContainer.innerHTML = '<div class="h-full flex flex-col items-center justify-center space-y-4"><p class="font-serif text-xl italic text-ink/30">Your bag is empty</p></div>';
+                document.getElementById('cart-footer').classList.add('hidden');
+            } else {
+                itemsContainer.innerHTML = cart.map((i, index) => `
+                    <div class="flex gap-6">
+                        <img src="${i.imageUrl}" class="w-20 h-24 object-cover">
+                        <div class="flex-grow space-y-2">
+                            <div class="flex justify-between font-serif text-lg italic">
+                                <span>${i.title}</span>
+                                <button onclick="removeItem(${index})"><i data-lucide="x" class="w-4 h-4 text-ink/30"></i></button>
+                            </div>
+                            <p class="text-[9px] uppercase tracking-[2px] text-ink/40 font-bold">Size: ${i.size}</p>
+                            <div class="flex justify-between items-center pt-2">
+                                <div class="flex items-center gap-4 text-xs">
+                                    <button onclick="updateQty(${index}, -1)" class="text-ink/30 hover:text-ink">-</button>
+                                    <span>${i.qty}</span>
+                                    <button onclick="updateQty(${index}, 1)" class="text-ink/30 hover:text-ink">+</button>
+                                </div>
+                                <span class="text-sm font-light">R$ ${(i.price * i.qty).toFixed(2)}</span>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+                
+                const subtotal = cart.reduce((acc, i) => acc + (i.price * i.qty), 0);
+                document.getElementById('cart-subtotal').innerText = `R$ ${subtotal.toFixed(2)}`;
+                document.getElementById('cart-footer').classList.remove('hidden');
+            }
+            lucide.createIcons();
+        }
+
+        function updateQty(index, delta) {
+            cart[index].qty = Math.max(1, cart[index].qty + delta);
+            saveCart();
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            saveCart();
+        }
+
+        function toggleCart(show) {
+            const sidebar = document.getElementById('cart-sidebar');
+            const content = sidebar.querySelector('.sidebar');
+            if (show) {
+                sidebar.classList.remove('hidden');
+                setTimeout(() => content.classList.remove('translate-x-full'), 10);
+            } else {
+                content.classList.add('translate-x-full');
+                setTimeout(() => sidebar.classList.add('hidden'), 400);
+            }
+        }
+
+        function toggleMenu(show) {
+            const menu = document.getElementById('mobile-menu');
+            const content = menu.querySelector('.sidebar');
+            if (show) {
+                menu.classList.remove('hidden');
+                setTimeout(() => content.classList.remove('-translate-x-full'), 10);
+            } else {
+                content.classList.add('-translate-x-full');
+                setTimeout(() => menu.classList.add('hidden'), 400);
+            }
+        }
+
+        function toggleSearch(show) {
+            const overlay = document.getElementById('search-overlay');
+            if (show) {
+                overlay.classList.remove('hidden');
+                document.getElementById('search-input-field').focus();
+            } else {
+                overlay.classList.add('hidden');
+            }
+        }
+
+        function closeModal() {
+            const content = document.getElementById('modal-content');
+            content.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => document.getElementById('product-modal').classList.add('hidden'), 300);
+        }
+
+        function filterCategory(cat) {
+            selectedCategory = cat;
+            renderStore();
+        }
+
+        function renderCheckout() {
+            const subtotal = cart.reduce((acc, i) => acc + (i.price * i.qty), 0);
+            document.getElementById('main-content').innerHTML = `
+                <div class="max-w-5xl mx-auto px-6 py-24 fade-in">
+                    <h2 class="font-serif text-6xl italic text-center mb-20">Checkout</h2>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+                        <div class="space-y-12">
+                            <div class="space-y-8">
+                                <h3 class="text-[10px] uppercase tracking-[4px] font-bold text-gold">Shipping Details</h3>
+                                <div class="space-y-4">
+                                    <input type="text" placeholder="Full Name" class="w-full bg-transparent border-b border-ink/10 py-4 text-sm font-light outline-none focus:border-gold transition-colors">
+                                    <input type="text" placeholder="Delivery Address" class="w-full bg-transparent border-b border-ink/10 py-4 text-sm font-light outline-none focus:border-gold transition-colors">
+                                </div>
+                            </div>
+                            <button onclick="alert('Order Sent via WhatsApp!')" class="w-full btn-prestige bg-ink text-paper">Complete Order via WhatsApp</button>
+                        </div>
+                        <div class="bg-ink/5 p-12 space-y-8 h-fit">
+                            <h3 class="text-[10px] uppercase tracking-[4px] font-bold text-gold">Summary</h3>
+                            <div class="space-y-6">
+                                ${cart.map(i => `
+                                    <div class="flex justify-between text-sm font-light italic">
+                                        <span>${i.qty}x ${i.title}</span>
+                                        <span>R$ ${(i.price * i.qty).toFixed(2)}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                            <div class="border-t border-ink/10 pt-8 flex justify-between font-serif text-2xl italic">
+                                <span>Total</span>
+                                <span>R$ ${subtotal.toFixed(2)}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderLookbook() {
+            document.getElementById('main-content').innerHTML = `
+                <div class="py-32 text-center fade-in">
+                    <h2 class="font-serif text-7xl italic mb-12">Lookbook</h2>
+                    <div class="max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=800" class="w-full aspect-[3/4] object-cover oval-mask">
+                        <img src="https://images.unsplash.com/photo-1539109132314-3477524c8595?q=80&w=800" class="w-full aspect-[3/4] object-cover mt-24">
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderAbout() {
+            document.getElementById('main-content').innerHTML = `
+                <div class="max-w-3xl mx-auto py-32 px-6 text-center space-y-12 fade-in">
+                    <h2 class="font-serif text-7xl italic">Our Story</h2>
+                    <p class="font-serif text-2xl italic leading-relaxed text-ink/70">
+                        "Elegance is not about being noticed, it's about being remembered."
+                    </p>
+                    <div class="space-y-8 text-sm font-light leading-relaxed text-ink/60">
+                        <p>Founded in 2024, LT Store emerged from a desire to bridge the gap between timeless minimalism and contemporary luxury.</p>
+                        <p>We believe that fashion is a silent form of expression, where the quality of fabrics and the precision of cuts speak louder than any passing trend.</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200" class="w-full h-[500px] object-cover">
+                </div>
+            `;
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>
